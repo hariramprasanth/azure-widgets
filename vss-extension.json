@@ -1,0 +1,52 @@
+{
+  "manifestVersion": 1,
+  "id": "HelloNameWidget",
+  "version": "1.0.0",
+  "name": "Hello Name Widget",
+  "description": "Hello name widgets description",
+  "publisher": "mycustomwidgets",
+  "categories": ["Azure Boards"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "img/logo.png"
+  },
+  "contributions": [
+    {
+      "id": "HelloName",
+      "type": "ms.vss-dashboards-web.widget",
+      "targets": ["ms.vss-dashboards-web.widget-catalog"],
+      "properties": {
+        "name": "Hello name",
+        "description": "hello name description",
+        "catalogIconUrl": "img/logo.png",
+        "previewImageUrl": "img/logo.png",
+        "uri": "hello-name.html",
+        "supportedSizes": [
+          {
+            "rowSpan": 1,
+            "columnSpan": 2
+          }
+        ],
+        "supportedScopes": ["project_team"]
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "hello-name.html",
+      "addressable": true
+    },
+    {
+      "path": "sdk/scripts",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    }
+  ]
+}
