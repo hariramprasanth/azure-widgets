@@ -1,0 +1,69 @@
+{
+  "manifestVersion": 1,
+  "id": "HelloNameUserWidget",
+  "version": "1.0.0",
+  "name": "Hello Name User input Widget",
+  "description": "Hello name user inputwidgets description",
+  "publisher": "mycustomwidgets",
+  "categories": ["Azure Boards"],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "img/logo.png"
+  },
+  "contributions": [
+    {
+      "id": "HelloNameUserInput",
+      "type": "ms.vss-dashboards-web.widget",
+      "targets": [
+        "ms.vss-dashboards-web.widget-catalog",
+        "mycustomwidgets.HelloNameUserWidget.HelloNameUserInput.Configuration"
+    ],
+      "properties": {
+        "name": "Hello Name user input",
+        "description": "Hello name user input description",
+        "catalogIconUrl": "img/logo.png",
+        "previewImageUrl": "img/logo.png",
+        "uri": "hello-name-with-user-input.html",
+        "supportedSizes": [
+          {
+            "rowSpan": 1,
+            "columnSpan": 2
+          }
+        ],
+        "supportedScopes": ["project_team"]
+      }
+    },
+    {
+      "id": "HelloNameUserInput.Configuration",
+      "type": "ms.vss-dashboards-web.widget-configuration",
+      "targets": [ "ms.vss-dashboards-web.widget-configuration" ],
+      "properties": {
+          "name": "HelloNameUserInput Configuration",
+          "description": "Configures HelloNameUserInput",
+          "uri": "configuration.html"
+      }
+  }
+  ],
+  "files": [
+    {
+      "path": "hello-name-with-user-input.html",
+      "addressable": true
+    },
+    {
+      "path": "sdk/scripts",
+      "addressable": true
+    },
+    {
+      "path": "img",
+      "addressable": true
+    },
+    {
+      "path": "configuration.html",
+      "addressable": true
+    }
+  ]
+}
