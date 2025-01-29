@@ -8,20 +8,21 @@
                     usePlatformStyles: true
                 });
             
-                VSS.require(["AzureDevOps/Dashboards/WidgetHelpers"], function (WidgetHelpers) {
+                VSS.require(["TFS/Dashboards/WidgetHelpers"], function (WidgetHelpers) {
+                    WidgetHelpers.IncludeWidgetConfigurationStyles();
                     VSS.register("HelloNameUserInput.Configuration", function () {   
-                        var $textBoxInput = $("#text-box-input-id input"); 
+                        var $textBoxInput = $("#text-box-input-id"); 
             
                         return {
                             load: function (widgetSettings, widgetConfigurationContext) {
                                 var settings = JSON.parse(widgetSettings.customSettings.data);
-                                $textBoxInput.on("input", function() {
+                                $textBoxInput.on("change", function() {
                                     var customSettings = {
                                             data: JSON.stringify({
-                                                textData: $("#text-box-input-id input").val()
+                                                textData: $("#text-box-input-id").val()
                                                     })
                                     };
-                                     widgetConfigurationContext.notify(WidgetHelpers.WidgetEvent.ConfigurationChange, WidgetHelpers.WidgetEvent.Args(getCustomSettings()));
+                                     widgetConfigurationContext.notify(WidgetHelpers.WidgetEvent.ConfigurationChange, WidgetHelpers.WidgetEvent.Args(customSettings));
 				                    
 				                });
             
@@ -30,7 +31,7 @@
                             onSave: function() {
                                 var customSettings = {
                                     data: JSON.stringify({
-                                        textData: $("#text-box-input-id input").val()
+                                        textData: $("#text-box-input-id").val()
                                         })
                                 };
                                 return WidgetHelpers.WidgetConfigurationSave.Valid(customSettings); 
@@ -42,11 +43,10 @@
             </script>       
         </head>
         <body>
+            <div> Configuration  for user input  here </div>
             <div class="widget-configuration">
-                <div class="single-line-text-input" id="text-box-input-id">
 					<label>Your name</label>
-					<input type="text" value="Contoso"></input>
-				</div>           
+					<input id="text-box-input-id" type="text" value=""></input>
             </div>
         </body>
     </html>
